@@ -1,9 +1,9 @@
 <script setup>
-import resume from './components/resume.vue';
+
 </script>
 
 <template>
-  <resume></resume>
+  <router-view></router-view>
 </template>
 
 <style scoped>
