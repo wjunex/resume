@@ -8,7 +8,7 @@
     </div>
     <div class="content">
         <div class="page">Smiley Sans
-            Type design
+            Type design  
 
             AD: Nagisa Chen
             D: oooooohmygosh, Nagisa Chen, Janine Sui, Heda Shi, Jian Li
