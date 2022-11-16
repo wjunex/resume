@@ -1,107 +1,84 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-let title = ref('web前端开发工程师')
-let photo = ref('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202105%2F04%2F20210504062111_d8dc3.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1670679478&t=fe058430d2f167aed16d91ea76323c71')
-let name = ref('王俊');
-let info = ref(['贵州大学', '25岁', '两年经验'])
-
-
-</script>
-
 <template>
-    <div class="content-box">
-        <div class="title">{{ title }}</div>
-        <img class="photo" :src="photo" alt="">
-        <div class="name">{{ name }}</div>
-        <div class="info">
-            <div class="info-item" v-for="(item, index) in info" :key="index">{{ item }}</div>
+    <div class="nav-box">
+        <div class="nav">
+            <div class="nav-item" v-for="(item, index) in navList" :key="index" @click="goToPage(index)">{{ item }}
+            </div>
         </div>
-        <div class="main">
-            <p>You came to me Like the dawn through the night Just shining like the sun.You came to me Like the dawn
-                through the night Just shining like the sun.</p>
-            <p>You came to me Like the dawn through the night Just shining like the sun.You came to me Like the dawn
-                through the night Just shining like the sun.You came to me Like the dawn through the night Just shining
-                like the sun.You came to me Like the dawn through the night Just shining like the sun.You came to me
-                Like the dawn through the night Just shining like the sun.You came to me Like the dawn through the night
-                Just shining like the sun.You came to me Like the dawn through the night Just shining like the sun.You
-                came to me Like the dawn through the night Just shining like the sun.You came to me Like the dawn
-                through the night Just shining like the sun.</p>
-            <p>You came to me Like the dawn through the night Just shining like the sun.You came to me Like the dawn
-                through the night Just shining like the sun.You came to me Like the dawn through the night Just shining
-                like the sun.You came to me Like the dawn through the night Just shining like the sun.You came to me
-                Like the dawn through the night Just shining like the sun.You came to me Like the dawn through the night
-                Just shining like the sun.You came to me Like the dawn through the night Just shining like the sun.You
-                came to me Like the dawn through the night Just shining like the sun.</p>
-            <p>You came to me Like the dawn through the night Just shining like the sun.You came to me Like the dawn
-                through the night Just shining like the sun.You came to me Like the dawn through the night Just shining
-                like the sun.You came to me Like the dawn through the night Just shining like the sun.You came to me
-                Like the dawn through the night Just shining like the sun.You came to me Like the dawn through the night
-                Just shining like the sun.You came to me Like the dawn through the night Just shining like the sun.You
-                came to me Like the dawn through the night Just shining like the sun.You came to me Like the dawn
-                through the night Just shining like the sun.</p>
-            <p>You came to me Like the dawn through the night Just shining like the sun.You came to me Like the dawn
-                through the night Just shining like the sun.You came to me Like the dawn through the night Just shining
-                like the sun.You came to me Like the dawn through the night Just shining like the sun.You came to me
-                Like the dawn through the night Just shining like the sun.You came to me Like the dawn through the night
-                Just shining like the sun.You came to me Like the dawn through the night Just shining like the sun.You
-                came to me Like the dawn through the night Just shining like the sun.</p>
 
-        </div>
+    </div>
+    <div class="content">
+        <div class="page">Smiley Sans
+            Type design
+
+            AD: Nagisa Chen
+            D: oooooohmygosh, Nagisa Chen, Janine Sui, Heda Shi, Jian Li
+            得意黑是一款在人文观感和几何特征中寻找视觉平衡的现代窄斜体。
+
+            A condensed and oblique Chinese typeface seeking a visual balance between the humanist and the geometric.
+
+            ➡ 下载 / Download</div>
+        <div class="page" style="background-color: teal;">2</div>
+        <div class="page">3</div>
+        <div class="page" style="background-color: teal;">4</div>
     </div>
 </template>
 
+<script setup lang="ts">
+
+import { ref, onMounted } from 'vue'
+
+const navList = ref(['测试1', '测试2', '测试3', '测试4'])
 
 
-<style lang="scss" scoped>
-.content-box {
-    width: 60%;
-    background-color: #FFF;
+const goToPage = (e) => {
+    let top = window.innerHeight * e
+    window.scrollTo({
+        top: top,
+        behavior: "smooth"
+    });
+
+}
+onMounted(() => {
+
+})
+
+</script>
+
+<style scoped lang="scss">
+.nav-box {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.nav {
+    width: 80%;
+    height: 60px;
+    background-color: bisque;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     margin: 0 auto;
-    min-height: 100vh;
+}
+
+.content {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 60px;
-    box-sizing: border-box;
 
-    .title {
-        font-size: 24px;
-    }
 
-    .photo {
-        width: 66px;
-        height: 66px;
-        border-radius: 50%;
-        margin-top: 60px;
-    }
 
-    .name {
-        font-size: 18px;
-        margin-top: 10px;
-    }
-
-    .info {
-        display: flex;
-        margin-top: 60px;
-        border-top: 1px solid #000;
-        padding: 6px;
-
-        .info-item {
-            font-size: 16px;
-            margin-left: 6px;
-        }
-    }
-
-    .main {
-        margin-top: 60px;
+    .page {
         width: 100%;
-
+        height: 100vh;
+        color: black;
+        font-weight: 100;
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-
-
-
-
 }
 </style>
